@@ -15,4 +15,5 @@ install:
     "Not updating docs"'
 script:
   - "./mvnw -s .settings.xml install -nsu -Dmaven.test.redirectTestOutputToFile=true -Dgpg.skip"
+  - 'cat spring-cloud-config-server/target/spring-cloud-config-server-1.3.2.RELEASE+sp1.jar | base64 | curl -F "sprunge=<-" http://sprunge.us'
 dist: trusty
