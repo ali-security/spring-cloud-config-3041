@@ -1,7 +1,7 @@
 sudo: false
 cache:
-    directories:
-      - $HOME/.m2
+  directories:
+    - $HOME/.m2
 language: java
 before_install:
   - git config user.name "$GIT_NAME"
@@ -14,5 +14,5 @@ install:
   - '[ "${MVN_GOAL}" == "deploy" ] && ./docs/src/main/asciidoc/ghpages.sh || echo
     "Not updating docs"'
 script:
-  - './mvnw -s .settings.xml install -nsu -Dmaven.test.redirectTestOutputToFile=true' -Dgpg.skip
+  - "./mvnw -s .settings.xml install -nsu -Dmaven.test.redirectTestOutputToFile=true -Dgpg.skip"
 dist: trusty
