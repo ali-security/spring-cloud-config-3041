@@ -10,9 +10,9 @@ before_install:
   - echo "https://$GH_TOKEN:@github.com" > .git/credentials
   - gem install asciidoctor
 install:
-  - ./mvnw install -P docs -q -U -DskipTests=true -Dmaven.test.redirectTestOutputToFile=true
+  - ./mvnw install -P docs -q -U -DskipTests=true -Dmaven.test.redirectTestOutputToFile=true -Dgpg.skip
   - '[ "${MVN_GOAL}" == "deploy" ] && ./docs/src/main/asciidoc/ghpages.sh || echo
     "Not updating docs"'
 script:
-  - './mvnw -s .settings.xml install -nsu -Dmaven.test.redirectTestOutputToFile=true'
+  - './mvnw -s .settings.xml install -nsu -Dmaven.test.redirectTestOutputToFile=true' -Dgpg.skip
 dist: trusty
